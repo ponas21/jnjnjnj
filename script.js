@@ -1,4 +1,5 @@
 const board = document.getElementById('board');
+ ngburk-codex/создать-игру-3-в-ряд
 const scoreDisplay = document.getElementById('score');
 const movesDisplay = document.getElementById('moves');
 const timerDisplay = document.getElementById('timer');
@@ -39,6 +40,11 @@ function restartGame() {
   createBoard();
   addEventListeners();
 }
+=======
+const width = 8;
+const colors = ['red', 'yellow', 'green', 'blue', 'purple'];
+const squares = [];
+ main
 
 function createBoard() {
   for (let i = 0; i < width * width; i++) {
@@ -52,6 +58,7 @@ function createBoard() {
   }
 }
 createBoard();
+ngburk-codex/создать-игру-3-в-ряд
 addEventListeners();
 
 function addEventListeners() {
@@ -62,12 +69,22 @@ function addEventListeners() {
   squares.forEach(square => square.addEventListener('dragleave', () => {}));
   squares.forEach(square => square.addEventListener('drop', dragDrop));
 }
+ main
 
 let colorBeingDragged;
 let colorBeingReplaced;
 let squareIdBeingDragged;
 let squareIdBeingReplaced;
 
+ngburk-codex/создать-игру-3-в-ряд
+=======
+squares.forEach(square => square.addEventListener('dragstart', dragStart));
+squares.forEach(square => square.addEventListener('dragend', dragEnd));
+squares.forEach(square => square.addEventListener('dragover', e => e.preventDefault()));
+squares.forEach(square => square.addEventListener('dragenter', e => e.preventDefault()));
+squares.forEach(square => square.addEventListener('dragleave', () => {}));
+squares.forEach(square => square.addEventListener('drop', dragDrop));
+ main
 
 function dragStart() {
   colorBeingDragged = this.classList[1];
@@ -88,7 +105,8 @@ function dragEnd() {
   let validMove = validMoves.includes(squareIdBeingReplaced);
 
   if (squareIdBeingReplaced && validMove) {
-    updateMoves();
+ ngburk-codex/создать-игру-3-в-ряд
+    updateMoves main
     squareIdBeingReplaced = null;
     checkBoard();
   } else if (squareIdBeingReplaced && !validMove) {
@@ -109,9 +127,14 @@ function checkRowForThree() {
     const decidedColor = squares[i].classList[1];
     const notValid = [6, 7, 14, 15, 22, 23, 30, 31, 38, 39, 46, 47, 54, 55, 62, 63];
     if (notValid.includes(i)) continue;
+ ngburk-codex/создать-игру-3-в-ряд
     if (decidedColor && rowOfThree.every(index => squares[index].classList[1] === decidedColor)) {
       rowOfThree.forEach(index => squares[index].className = 'square');
       updateScore(3);
+=======
+    if (rowOfThree.every(index => squares[index].classList[1] === decidedColor)) {
+      rowOfThree.forEach(index => squares[index].className = 'square');
+ main
     }
   }
 }
@@ -120,6 +143,7 @@ function checkColumnForThree() {
   for (let i = 0; i < 48; i++) {
     const columnOfThree = [i, i + width, i + width * 2];
     const decidedColor = squares[i].classList[1];
+ ngburk-codex/создать-игру-3-в-ряд
     if (decidedColor && columnOfThree.every(index => squares[index].classList[1] === decidedColor)) {
       columnOfThree.forEach(index => squares[index].className = 'square');
       updateScore(3);
@@ -147,6 +171,10 @@ function checkColumnForFour() {
     if (decidedColor && columnOfFour.every(index => squares[index].classList[1] === decidedColor)) {
       columnOfFour.forEach(index => squares[index].className = 'square');
       updateScore(4);
+
+    if (columnOfThree.every(index => squares[index].classList[1] === decidedColor)) {
+      columnOfThree.forEach(index => squares[index].className = 'square');
+ main
     }
   }
 }
@@ -165,8 +193,11 @@ function moveDown() {
 }
 
 function checkBoard() {
+ ngburk-codex/создать-игру-3-в-ряд
   checkRowForFour();
   checkColumnForFour();
+
+ main
   checkRowForThree();
   checkColumnForThree();
   moveDown();
