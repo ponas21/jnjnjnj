@@ -22,3 +22,17 @@ body {
 .green { background: #2ecc71; }
 .blue { background: #3498db; }
 .purple { background: #9b59b6; }
+
+#scoreboard {
+  margin-top: 15px;
+}
+
+#scoreboard div {
+  margin: 5px;
+  font-size: 18px;
+}
+
+#restart {
+  padding: 5px 10px;
+  margin-top: 10px;
+}
