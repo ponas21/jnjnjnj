@@ -1,0 +1,24 @@
+body {
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+#board {
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(8, 50px);
+  grid-template-rows: repeat(8, 50px);
+  gap: 2px;
+  width: max-content;
+}
+
+.square {
+  width: 50px;
+  height: 50px;
+}
+
+.red { background: #e74c3c; }
+.yellow { background: #f1c40f; }
+.green { background: #2ecc71; }
+.blue { background: #3498db; }
+.purple { background: #9b59b6; }
